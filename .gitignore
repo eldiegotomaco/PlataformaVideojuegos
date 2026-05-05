@@ -1,0 +1,36 @@
+# Visual Studio / .NET
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.log
+
+# ASP.NET / SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Node / React
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Android Studio / Gradle
+.gradle/
+.idea/
+local.properties
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Android build outputs
+app/build/
+**/build/
+
+# OS files
+.DS_Store
+Thumbs.db

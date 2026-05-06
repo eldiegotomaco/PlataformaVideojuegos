@@ -857,6 +857,10 @@
             "type": "number",
             "format": "double"
           },
+          "imagenUrl": {
+            "type": "string",
+            "nullable": true
+          },
           "categoriaId": {
             "type": "integer",
             "format": "int32"

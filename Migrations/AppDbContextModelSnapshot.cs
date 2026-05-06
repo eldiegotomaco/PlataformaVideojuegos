@@ -15,7 +15,7 @@ namespace WebApplication1.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.2");
 
             modelBuilder.Entity("Categoria", b =>
                 {
@@ -60,6 +60,34 @@ namespace WebApplication1.Migrations
                     b.HasIndex("VideojuegosId");
 
                     b.ToTable("PlataformaVideojuego");
+                });
+
+            modelBuilder.Entity("Videojuego", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoriaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImagenUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriaId");
+
+                    b.ToTable("Videojuegos");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.BibliotecaUsuario", b =>
@@ -203,33 +231,6 @@ namespace WebApplication1.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Videojuego", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CategoriaId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Titulo")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoriaId");
-
-                    b.ToTable("Videojuegos");
-                });
-
             modelBuilder.Entity("PlataformaVideojuego", b =>
                 {
                     b.HasOne("Plataforma", null)
@@ -238,11 +239,22 @@ namespace WebApplication1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplication1.Models.Videojuego", null)
+                    b.HasOne("Videojuego", null)
                         .WithMany()
                         .HasForeignKey("VideojuegosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Videojuego", b =>
+                {
+                    b.HasOne("Categoria", "Categoria")
+                        .WithMany("Videojuegos")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categoria");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.BibliotecaUsuario", b =>
@@ -253,7 +265,7 @@ namespace WebApplication1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplication1.Models.Videojuego", "Videojuego")
+                    b.HasOne("Videojuego", "Videojuego")
                         .WithMany()
                         .HasForeignKey("VideojuegoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -283,7 +295,7 @@ namespace WebApplication1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplication1.Models.Videojuego", "Videojuego")
+                    b.HasOne("Videojuego", "Videojuego")
                         .WithMany()
                         .HasForeignKey("VideojuegoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -302,7 +314,7 @@ namespace WebApplication1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplication1.Models.Videojuego", "Videojuego")
+                    b.HasOne("Videojuego", "Videojuego")
                         .WithMany()
                         .HasForeignKey("VideojuegoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -322,17 +334,6 @@ namespace WebApplication1.Migrations
                         .IsRequired();
 
                     b.Navigation("Rol");
-                });
-
-            modelBuilder.Entity("WebApplication1.Models.Videojuego", b =>
-                {
-                    b.HasOne("Categoria", "Categoria")
-                        .WithMany("Videojuegos")
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categoria");
                 });
 
             modelBuilder.Entity("Categoria", b =>

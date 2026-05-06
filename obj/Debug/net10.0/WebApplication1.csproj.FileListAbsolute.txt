@@ -274,3 +274,4 @@ C:\Users\Asus\source\repos\WebApplication1\bin\Debug\net10.0\zh-Hans\Microsoft.C
 C:\Users\Asus\source\repos\WebApplication1\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Asus\source\repos\WebApplication1\bin\Debug\net10.0\runtimes\linux-musl-riscv64\native\libe_sqlite3.so
 C:\Users\Asus\source\repos\WebApplication1\bin\Debug\net10.0\runtimes\linux-riscv64\native\libe_sqlite3.so
+C:\Users\Asus\source\repos\WebApplication1\obj\Debug\net10.0\WebApplication1.sourcelink.json

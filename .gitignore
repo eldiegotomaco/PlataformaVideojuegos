@@ -7,9 +7,9 @@ obj/
 *.log
 
 # ASP.NET / SQLite
-*.db
-*.db-shm
-*.db-wal
+# *.db
+# *.db-shm
+# *.db-wal
 
 # Node / React
 node_modules/
